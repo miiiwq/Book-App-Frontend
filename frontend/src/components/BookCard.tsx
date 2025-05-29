@@ -19,12 +19,16 @@ interface BookCardProps {
 
 const BookCard = ({ book, variant = 'default' }: BookCardProps) => {
   if (variant === 'compact') {
+    console.log('cover for:', book.title, '→', book.cover);
     return (
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-200 hover:scale-105">
         <div className="aspect-[3/4] bg-gradient-to-br from-blue-100 to-purple-100 relative">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <BookOpen className="text-blue-500" size={32} />
-          </div>
+          <img
+           src={book.cover}
+           alt={book.title}
+           className="absolute inset-0 w-full h-full object-cover"
+           onError={(e) => { e.currentTarget.src = '/books/default.jpg' }}
+           />
           <div className="absolute top-2 right-2 bg-white/90 rounded-full px-2 py-1">
             <span className="text-xs font-medium text-gray-700">{book.rating}★</span>
           </div>

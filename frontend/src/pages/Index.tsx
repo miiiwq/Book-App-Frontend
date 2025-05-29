@@ -1,22 +1,24 @@
 import { useState } from 'react';
-import { Book, Search, User, TrendingUp, Plus, Library } from 'lucide-react';
+import { Book, Search, User, TrendingUp, Plus, Library, BarChart2 } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { Settings } from "lucide-react";
 import BookCard from '../components/BookCard';
 import ProgressCard from '../components/ProgressCard';
 import BottomNav from '../components/BottomNav';
 import HeaderNav from '../components/HeaderNav';
 import BrowseLibrary from '../components/BrowseLibrary';
-import { books, currentlyReading, readingStats } from '../data/dummyData';
+import { books, currentlyReading, readingStats } from "../data/dummyData";
+
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('home');
-  const [libraryView, setLibraryView] = useState('my-books'); // 'my-books' or 'browse'
+  const [libraryView, setLibraryView] = useState('my-books');
 
   const renderContent = () => {
     switch (activeTab) {
       case 'library':
         return (
           <div className="space-y-4">
-            {/* Library Navigation */}
             <div className="flex space-x-1 bg-gray-100 rounded-lg p-1">
               <button
                 onClick={() => setLibraryView('my-books')}
@@ -42,7 +44,6 @@ const Index = () => {
               </button>
             </div>
 
-            {/* Content based on selected view */}
             {libraryView === 'my-books' ? (
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
@@ -122,6 +123,42 @@ const Index = () => {
             </div>
           </div>
         );
+      case 'insight':
+        return (
+          <div className="space-y-6">
+            <div className="bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl p-6 text-white">
+              <h2 className="text-xl font-bold mb-2">Your Reading Insight</h2>
+              <p className="opacity-90">You're doing great! 📈</p>
+              <div className="mt-4 bg-white/30 rounded-full h-2">
+                <div className="bg-white rounded-full h-2 w-2/3"></div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-blue-100 rounded-xl p-4 text-center">
+                <h3 className="text-xl font-bold text-blue-700">245</h3>
+                <p className="text-sm text-gray-600">Pages this week</p>
+              </div>
+              <div className="bg-green-100 rounded-xl p-4 text-center">
+                <h3 className="text-xl font-bold text-green-700">15h 30m</h3>
+                <p className="text-sm text-gray-600">Reading Time</p>
+              </div>
+              <div className="bg-purple-100 rounded-xl p-4 text-center col-span-2">
+                <h3 className="text-xl font-bold text-purple-700">Fiction</h3>
+                <p className="text-sm text-gray-600">Most Read Genre</p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Recent Activity</h3>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>📖 Read 30 pages of <em>Atomic Habits</em></li>
+                <li>🎯 Completed <em>Deep Work</em></li>
+                <li>⏱ 1h 15m reading yesterday</li>
+              </ul>
+            </div>
+          </div>
+        );
       default:
         return (
           <div className="space-y-6">
@@ -158,11 +195,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50 max-w-md mx-auto">
       <HeaderNav activeTab={activeTab} />
-      
       <main className="px-4 py-6 pb-20">
         {renderContent()}
       </main>
-
       <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
     </div>
   );
