@@ -1,10 +1,10 @@
 # Book Tracker App Frontend
 
-A modern React application for managing your reading list, built with Vite, TypeScript, and shadcn/ui.
+A modern React application for managing your reading list, book recommendations built with Vite, TypeScript, and shadcn/ui.
 
 ## Features
 
-- 📚 Add, view, update, and delete books
+- 📚 Add, view, update, and delete books, recommendation books, and insight
 - 📖 Track reading status (unread/reading/completed)
 - 🎨 Modern and responsive UI with Tailwind CSS
 - 🔄 Real-time updates
@@ -18,7 +18,6 @@ A modern React application for managing your reading list, built with Vite, Type
 - Vite
 - Tailwind CSS
 - shadcn/ui
-- ESLint
 - PostCSS
 
 ## Project Structure
@@ -46,7 +45,7 @@ frontend/
 
 ## Prerequisites
 
-- Node.js 16.x or later
+- Node.js 16.x 
 - npm or yarn
 
 ## Getting Started
@@ -120,16 +119,6 @@ The application will be available at http://localhost:5173
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## Future Enhancements
-
-- [ ] Authentication system
-- [ ] Search and filtering
-- [ ] Sorting options
-- [ ] Book categories/tags
-- [ ] Reading progress tracking
-- [ ] Book ratings and reviews
-- [ ] User profiles and personal libraries
 
 ## License
 
